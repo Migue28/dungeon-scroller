@@ -1,6 +1,6 @@
-import { Map } from "../components/Map";
-import { MapCanva } from "../components/MapCanva";
-import { Player } from "../components/Player";
+import { Map } from "../components/map";
+import { MapCanva } from "../components/map-canva";
+import { Player } from "../components/player";
 import { MapCell } from "../types/map";
 import { mapCellConstructor } from "../utils/map.";
 

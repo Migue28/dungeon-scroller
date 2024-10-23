@@ -1,4 +1,4 @@
-import { MapView } from "./views/MapView";
+import { MapView } from "./views/map-view";
 
 function App() {
   return (
