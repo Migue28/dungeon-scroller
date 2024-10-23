@@ -21,6 +21,15 @@ export const mapCellConstructor = (mapId: string) => {
   const mapCell: MapCell = {
     mapId: _mapId,
     goUp: `${_mapId.world}${_mapId.xCoordinate.name}${
+      _mapId.xCoordinate.coordinate
+    }${_mapId.yCoordinate.name}${_mapId.yCoordinate.coordinate + 1}`,
+    goDown: `${_mapId.world}${_mapId.xCoordinate.name}${
+      _mapId.xCoordinate.coordinate
+    }${_mapId.yCoordinate.name}${_mapId.yCoordinate.coordinate - 1}`,
+    goLeft: `${_mapId.world}${_mapId.xCoordinate.name}${
+      _mapId.xCoordinate.coordinate - 1
+    }${_mapId.yCoordinate.name}${_mapId.yCoordinate.coordinate}`,
+    goRight: `${_mapId.world}${_mapId.xCoordinate.name}${
       _mapId.xCoordinate.coordinate + 1
     }${_mapId.yCoordinate.name}${_mapId.yCoordinate.coordinate}`,
   };
