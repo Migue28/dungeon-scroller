@@ -1,4 +1,5 @@
 import { Map } from "../components/Map";
+import { MapCanva } from "../components/MapCanva";
 import { MapCell } from "../types/map";
 import { mapCellConstructor } from "../utils/map.";
 
@@ -8,5 +9,9 @@ export const MapView = () => {
     mapCellConstructor("ax2y1"),
   ];
 
-  return <Map mapCells={map} />;
+  return (
+    <MapCanva>
+      <Map mapCells={map} />
+    </MapCanva>
+  );
 };
