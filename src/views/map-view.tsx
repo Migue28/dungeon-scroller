@@ -1,11 +1,12 @@
 import { Map } from "../components/map";
 import { MapCanva } from "../components/map-canva";
 import { Player } from "../components/player";
-import { MapCell } from "../types/map";
+import { IMapCell } from "../types/map";
 import { mapCellConstructor } from "../utils/map";
+import { MapCellView } from "./map-cell-view";
 
 export const MapView = () => {
-  const map: MapCell[] = [
+  const map: IMapCell[] = [
     mapCellConstructor("ax1y1"),
     mapCellConstructor("ax2y1"),
     mapCellConstructor("ax3y1"),
@@ -17,7 +18,8 @@ export const MapView = () => {
   return (
     <Player>
       <MapCanva>
-        <Map mapCells={map} />
+        {/* <Map mapCells={map} /> */}
+        <MapCellView world="a" mapId="ax1y1" />
       </MapCanva>
     </Player>
   );
