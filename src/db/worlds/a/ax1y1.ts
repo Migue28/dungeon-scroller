@@ -1,3 +1,5 @@
-export const a1x1y1 = {
+import { IContent } from "../../../types/map";
+
+export const data: IContent = {
   background: "src/assets/react.svg",
 };
