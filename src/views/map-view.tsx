@@ -2,7 +2,7 @@ import { Map } from "../components/map";
 import { MapCanva } from "../components/map-canva";
 import { Player } from "../components/player";
 import { MapCell } from "../types/map";
-import { mapCellConstructor } from "../utils/map.";
+import { mapCellConstructor } from "../utils/map";
 
 export const MapView = () => {
   const map: MapCell[] = [
