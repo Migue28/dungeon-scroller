@@ -1,7 +1,7 @@
-import { MapId } from "../types/map";
+import { IMapId } from "../types/map";
 
 export const MapCell = (
-  mapId: MapId,
+  mapId: IMapId,
   goUp?: string
   //   goDown?: string,
   //   goLeft?: string,

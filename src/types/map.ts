@@ -1,4 +1,4 @@
-export type MapId = {
+export type IMapId = {
   id: string;
   world: string;
   xCoordinate: {
@@ -11,8 +11,9 @@ export type MapId = {
   };
 };
 
-export type MapCell = {
-  mapId: MapId;
+export type IMapCell = {
+  mapId: IMapId;
+  content?: IContent;
   goUp?: string;
   goDown?: string;
   goLeft?: string;
@@ -20,5 +21,16 @@ export type MapCell = {
   visited?: boolean;
   exitUp?: boolean;
   exitDown?: boolean;
-  content?: [];
+};
+
+export type IContent = {
+  background: string;
+  enemies?: [];
+  items?: [];
+  traps?: [];
+};
+
+export type MapCellData = {
+  mapId: IMapId;
+  content: IContent;
 };

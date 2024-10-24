@@ -1,7 +1,7 @@
-import { MapCell } from "../types/map";
+import { IMapCell } from "../types/map";
 
 interface MapProps {
-  mapCells: MapCell[];
+  mapCells: IMapCell[];
 }
 
 export const Map = ({ mapCells }: MapProps) => {

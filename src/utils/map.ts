@@ -1,7 +1,7 @@
-import { MapId, MapCell } from "../types/map";
+import { IMapId, IMapCell } from "../types/map";
 
 export const mapIdConstructor = (id: string) => {
-  const mapId: MapId = {
+  const mapId: IMapId = {
     id: id,
     world: id[0],
     xCoordinate: {
@@ -18,7 +18,7 @@ export const mapIdConstructor = (id: string) => {
 
 export const mapCellConstructor = (mapId: string) => {
   const _mapId = mapIdConstructor(mapId);
-  const mapCell: MapCell = {
+  const mapCell: IMapCell = {
     mapId: _mapId,
     goUp: `${_mapId.world}${_mapId.xCoordinate.name}${
       _mapId.xCoordinate.coordinate
