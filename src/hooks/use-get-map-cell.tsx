@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { MapCellData } from "../types/map";
-import { mapIdConstructor } from "../utils/map";
+import { IContent } from "../types/map";
 import { worldStructure as ws } from "../db/world-structure";
 
 type WorldStructure = { [key: string]: string[] };
@@ -10,37 +9,37 @@ const worldStructure: WorldStructure = ws;
 const loadMapCellData = async (
   world: string,
   mapId: string
-): Promise<MapCellData | undefined> => {
+): Promise<IContent | undefined> => {
   try {
     const module = await import(`../db/worlds/${world}/${mapId}.ts`);
-    return module.default;
+    // Check if the module has a `default` export.
+    const data = module.default ? module.default : module;
+    return data;
   } catch (error) {
     console.error(`Failed to load data for ${world}/${mapId}:`, error);
     return undefined;
   }
 };
 
-export const useGetMapCell = (world: string, mapId: string) => {
-  const [selectedMapCellData, setSelectedMapCell] = useState<
-    MapCellData | undefined
+export const useGetMapCellContent = (world: string, mapId: string) => {
+  const [selectedMapCellContent, setSelectedMapCellContent] = useState<
+    IContent | undefined
   >(undefined);
 
   useEffect(() => {
     const fetchMapCellData = async () => {
-      const _mapId = mapIdConstructor(mapId);
-
       // Validate if the world exists in the world structure
       const worldMapIds = worldStructure[world];
-      if (worldMapIds && worldMapIds.includes(_mapId.id)) {
-        const data = await loadMapCellData(world, _mapId.id);
-        setSelectedMapCell(data);
+      if (worldMapIds && worldMapIds.includes(mapId)) {
+        const data = await loadMapCellData(world, mapId);
+        setSelectedMapCellContent(data);
       } else {
-        setSelectedMapCell(undefined);
+        setSelectedMapCellContent(undefined);
       }
     };
 
     fetchMapCellData();
   }, [world, mapId]);
 
-  return selectedMapCellData;
+  return { selectedMapCellContent };
 };
