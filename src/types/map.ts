@@ -14,10 +14,10 @@ export type IMapId = {
 export type IMapCell = {
   mapId: IMapId;
   content?: IContent;
-  goUp?: string;
-  goDown?: string;
-  goLeft?: string;
-  goRight?: string;
+  goUp: string;
+  goDown: string;
+  goLeft: string;
+  goRight: string;
   visited?: boolean;
   exitUp?: boolean;
   exitDown?: boolean;
