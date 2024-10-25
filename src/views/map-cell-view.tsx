@@ -10,7 +10,6 @@ type MapCellProps = {
 
 export const MapCellView = ({ world, mapId }: MapCellProps) => {
   const { selectedMapCellContent } = useGetMapCellContent(world, mapId);
-  console.log(selectedMapCellContent, selectedMapCellContent?.background);
 
   // If you need to perform additional logic when `mapCellData` updates, use `useEffect`.
   useEffect(() => {
@@ -18,11 +17,5 @@ export const MapCellView = ({ world, mapId }: MapCellProps) => {
       // Perform any additional logic here when `mapCellData` is updated.
     }
   }, [selectedMapCellContent]);
-  return (
-    <>
-      {/* <MapCell mapId={mapId} /> */}
-
-      <h1>{selectedMapCellContent?.background}</h1>
-    </>
-  );
+  return <MapCell mapId={mapId} content={selectedMapCellContent} />;
 };
