@@ -1,12 +1,18 @@
-import { useCallback, useEffect, useState } from "react";
+// PlayerContext.tsx
+import React, { createContext, useState, useCallback, useEffect } from "react";
 import { playerStartingPosition } from "../db/player-starting-position";
 import { mapCellConstructor } from "../utils/map";
 
-type PlayerProps = {
-  children: React.ReactNode;
+type PlayerContextType = {
+  position: string;
+  setPosition: React.Dispatch<React.SetStateAction<string>>;
 };
 
-export const Player = ({ children }: PlayerProps) => {
+export const PlayerContext = createContext<PlayerContextType | undefined>(
+  undefined
+);
+
+export const PlayerProvider = ({ children }: { children: React.ReactNode }) => {
   const [position, setPosition] = useState(playerStartingPosition);
   const positionCell = mapCellConstructor(position);
 
@@ -23,7 +29,6 @@ export const Player = ({ children }: PlayerProps) => {
           ? positionCell.goRight
           : position;
 
-      // Update the position if it changed
       if (newPosition !== position) {
         setPosition(newPosition);
         console.log(`Player moved to: ${newPosition}`);
@@ -38,5 +43,10 @@ export const Player = ({ children }: PlayerProps) => {
       document.removeEventListener("keydown", playerController);
     };
   }, [playerController]);
-  return <>{children}</>;
+
+  return (
+    <PlayerContext.Provider value={{ position, setPosition }}>
+      {children}
+    </PlayerContext.Provider>
+  );
 };
